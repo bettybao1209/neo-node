@@ -30,10 +30,10 @@ namespace Neo.CLI
         /// Process "vote for validators" command
         /// </summary>
         [ConsoleCommand("vote", Category = "Consensus Commands")]
-        private void OnVotingCommand(string[] pubkeysArr, UInt160 account)
+        private void OnVotingCommand(ECPoint[] pubkeys, UInt160 account)
         {
             if (NoWallet()) return;
-            ECPoint[] pubkeys = pubkeysArr.Select(p => ECPoint.Parse(p, ECCurve.Secp256r1)).ToArray();
+            
             Transaction tx = new Transaction
             {
                 Sender = UInt160.Zero,
